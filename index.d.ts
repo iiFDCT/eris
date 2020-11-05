@@ -2522,6 +2522,17 @@ declare namespace Eris {
     type: 13;
   }
 
+  export interface Sticker {
+    id: string;
+    name: string;
+    description: string;
+    pack_id: string;
+    asset: string;
+    preview_asset?: string;
+    format_type: number;
+    tags: string;
+  }
+
   export class StoreChannel extends GuildChannel {
     type: 6;
     edit(options: Omit<EditChannelOptions, "icon" | "ownerID">, reason?: string): Promise<this>;
