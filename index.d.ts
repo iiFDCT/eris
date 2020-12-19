@@ -2395,11 +2395,13 @@ declare namespace Eris {
   }
 
   export class Role extends Base {
+    botID?: string;
     color: number;
     createdAt: number;
     guild: Guild;
     hoist: boolean;
     id: string;
+    integrationID?: string;
     json: Partial<Record<Exclude<keyof Constants["Permissions"], "all" | "allGuild" | "allText" | "allVoice">, boolean>>;
     managed: boolean;
     mention: string;
