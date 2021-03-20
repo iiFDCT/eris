@@ -801,6 +801,7 @@ declare namespace Eris {
     discriminator: string;
     id: string;
     username: string;
+    tag: string;
   }
   interface RequestGuildMembersOptions extends Omit<FetchMembersOptions, "userIDs"> {
     nonce: string;
@@ -1036,6 +1037,7 @@ declare namespace Eris {
       discriminator: string;
       id: string;
       username: string;
+      tag: string;
     };
     team: OAuthTeamInfo | null;
   }
@@ -2193,6 +2195,7 @@ declare namespace Eris {
     defaultAvatar: string;
     defaultAvatarURL: string;
     discriminator: string;
+    tag: string;
     game: Activity | null;
     guild: Guild;
     id: string;
@@ -2581,6 +2584,7 @@ declare namespace Eris {
     defaultAvatar: string;
     defaultAvatarURL: string;
     discriminator: string;
+    tag: string;
     id: string;
     mention: string;
     publicFlags?: number;
