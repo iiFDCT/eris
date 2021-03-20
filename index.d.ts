@@ -2200,6 +2200,7 @@ declare namespace Eris {
     joinedAt: number;
     mention: string;
     nick: string | null;
+    displayName: string;
     pending?: boolean;
     permissions: Permission;
     premiumSince: number;
