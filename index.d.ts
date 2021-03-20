@@ -2201,8 +2201,6 @@ declare namespace Eris {
     mention: string;
     nick: string | null;
     pending?: boolean;
-    /** @deprecated */
-    permission: Permission;
     permissions: Permission;
     premiumSince: number;
     roles: string[];
