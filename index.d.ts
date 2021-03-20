@@ -2224,6 +2224,7 @@ declare namespace Eris {
     application?: MessageApplication;
     attachments: Attachment[];
     author: User;
+    guild: Guild;
     channel: T;
     channelMentions: string[];
     /** @deprecated */
