@@ -411,6 +411,7 @@ declare namespace Eris {
     features: string[];
     icon: string | null;
     large: boolean;
+    maxEmojis: number;
     maxMembers?: number;
     maxVideoChannelUsers?: number;
     mfaLevel: MFALevel;
@@ -1932,6 +1933,7 @@ declare namespace Eris {
     id: string;
     joinedAt: number;
     large: boolean;
+    maxEmojis: number;
     maxMembers: number;
     maxPresences: number;
     maxVideoChannelUsers?: number;
