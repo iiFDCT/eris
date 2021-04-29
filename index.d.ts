@@ -1930,7 +1930,6 @@ declare namespace Eris {
     description: string | null;
     discoverySplash: string | null;
     discoverySplashURL: string | null;
-    emojiCount?: number;
     emojis: Emoji[];
     explicitContentFilter: ExplicitContentFilter;
     features: string[];
