@@ -2388,13 +2388,11 @@ declare namespace Eris {
   }
 
   export class Role extends Base {
-    botID?: string;
     color: number;
     createdAt: number;
     guild: Guild;
     hoist: boolean;
     id: string;
-    integrationID?: string;
     json: Partial<Record<Exclude<keyof Constants["Permissions"], "all" | "allGuild" | "allText" | "allVoice">, boolean>>;
     managed: boolean;
     mention: string;
@@ -2515,17 +2513,6 @@ declare namespace Eris {
   export class StageChannel extends VoiceChannel {
     topic?: string;
     type: 13;
-  }
-
-  export interface Sticker {
-    id: string;
-    name: string;
-    description: string;
-    pack_id: string;
-    asset: string;
-    preview_asset?: string;
-    format_type: number;
-    tags: string;
   }
 
   export class StoreChannel extends GuildChannel {
