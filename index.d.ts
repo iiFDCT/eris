@@ -50,6 +50,17 @@ declare namespace Eris {
   type PremiumTier = 0 | 1 | 2 | 3;
   type VerificationLevel = 0 | 1 | 2 | 3 | 4;
 
+  // Interaction
+  type InteractionOptions = {
+    allowedMentions?: AllowedMentions;
+    content?: string;
+    embed?: EmbedOptions;
+    flags?: number;
+    messageReference?: MessageReferenceReply;
+    tts?: boolean;
+    type: number;
+  };
+
   // Message
   type AdvancedMessageContent = {
     allowedMentions?: AllowedMentions;
@@ -526,6 +537,7 @@ declare namespace Eris {
     (event: "guildUnavailable" | "unavailableGuildCreate", listener: (guild: UnavailableGuild) => void): T;
     (event: "guildUpdate", listener: (guild: Guild, oldGuild: OldGuild) => void): T;
     (event: "hello", listener: (trace: string[], id: number) => void): T;
+    (event: "interactionCreate", listener: (interaction: Interaction) => void): T;
     (event: "inviteCreate" | "inviteDelete", listener: (guild: Guild, invite: Invite) => void): T;
     (event: "messageCreate", listener: (message: Message<PossiblyUncachedTextableChannel>) => void): T;
     (event: "messageDelete" | "messageReactionRemoveAll", listener: (message: PossiblyUncachedMessage) => void): T;
@@ -1588,6 +1600,7 @@ declare namespace Eris {
     createGuildEmoji(guildID: string, options: EmojiOptions, reason?: string): Promise<Emoji>;
     createGuildFromTemplate(code: string, name: string, icon?: string): Promise<Guild>;
     createGuildTemplate(guildID: string, name: string, description?: string | null): Promise<GuildTemplate>;
+    createInteractionResponse(interactionID: string, interactionToken: string, options: InteractionOptions): Promise<void>;
     createMessage(channelID: string, content: MessageContent, file?: MessageFile | MessageFile[]): Promise<Message>;
     createRole(guildID: string, options?: RoleOptions | Role, reason?: string): Promise<Role>;
     crosspostMessage(channelID: string, messageID: string): Promise<Message>;
@@ -2164,6 +2177,34 @@ declare namespace Eris {
     edit(options: GuildTemplateOptions): Promise<GuildTemplate>;
     sync(): Promise<GuildTemplate>;
     toJSON(props?: string[]): JSONCache;
+  }
+
+  //Interaction
+  export class Interaction {
+    applicationId: string;
+    channelId: string;
+    data?: {
+      componentType?: number;
+      id?: string;
+      custom_id?: string;
+      name?: string;
+      options?: { name?: string; value: string }
+    };
+    guildId?: string;
+    id: string;
+    member: Member;
+    message: Message;
+    token: string;
+    type: number;
+    version: number;
+    acknowledge(): Promise<void>;
+    createFollowup(content: InteractionOptions): Promise<Message>;
+    createMessage(content: InteractionOptions): Promise<void>;
+    defer(): Promise<void>;
+    deferUpdate(): Promise<void>;
+    delete(messageId: string): Promise<void>;
+    edit(messageId: string, content: InteractionOptions): Promise<Message>;
+    editParent(content: InteractionOptions): Promise<void>;
   }
 
   // If CT (count) is "withMetadata", it will not have count properties
